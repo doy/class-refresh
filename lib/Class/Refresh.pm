@@ -224,7 +224,7 @@ sub _mod_to_file {
     my $class = shift;
     my ($mod) = @_;
 
-    return $mod if $mod =~ /\.p[lm]$/;
+    return $mod unless $mod =~ /^\w+(?:::\w+)*$/;
 
     my $file = $mod;
     $file =~ s{::}{/}g;
