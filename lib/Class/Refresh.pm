@@ -88,7 +88,7 @@ sub _dependent_modules {
                  # XXX: metacircularity? what if $class is Class::MOP::Class?
                  ($mod->isa('Class::MOP::Class')
                      ? (map { $_->name }
-                            grep { $_->isa($class) }
+                            grep { $_->isa($mod) }
                                  Class::MOP::get_all_metaclass_instances())
                      : ())),
         );
