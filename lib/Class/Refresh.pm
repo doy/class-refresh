@@ -35,7 +35,8 @@ sub refresh_module {
     my ($mod) = @_;
     $mod = $class->_file_to_mod($mod);
 
-    my @to_refresh = $class->_dependent_modules($mod);
+    my @to_refresh = grep { exists $INC{ $class->_mod_to_file($_) } }
+                          $class->_dependent_modules($mod);
 
     $class->unload_module($_) for @to_refresh;
     $class->load_module($_) for @to_refresh;
