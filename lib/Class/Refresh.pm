@@ -19,7 +19,7 @@ sub modified_modules {
     my @ret;
     for my $file (keys %INC) {
         if (exists $CACHE{$file}) {
-            push @ret, $file
+            push @ret, $class->_file_to_mod($file)
                 if $class->_mtime($file) ne $CACHE{$file};
         }
         else {
