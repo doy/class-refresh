@@ -74,6 +74,8 @@ sub _dependent_modules {
 
     my $meta = Class::MOP::class_of($mod);
 
+    return ($mod) unless $meta;
+
     if ($meta->isa('Class::MOP::Class')) {
         # attribute cloning (has '+foo') means that we can't skip refreshing
         # mutable classes
