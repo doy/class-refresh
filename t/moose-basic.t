@@ -8,7 +8,7 @@ use Test::Class::Refresh;
 
 use Class::Refresh;
 
-my $dir = prepare_temp_dir_for('01');
+my $dir = prepare_temp_dir_for('moose-basic');
 push @INC, $dir->dirname;
 
 require Foo;
@@ -28,7 +28,7 @@ ok(!Foo::Immutable->can('other_meth'), "!Foo::Immutable->can('other_meth')");
 
 
 sleep 2;
-update_temp_dir_for('01', $dir);
+update_temp_dir_for('moose-basic', $dir);
 
 Class::Refresh->refresh;
 
