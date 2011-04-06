@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Test::Requires 'Moose';
 use lib 't/lib';
 use Test::Class::Refresh;
 
