@@ -1,6 +1,7 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+      - whoops, can't use Sub::Exporter in tests
 
 0.01  2011-04-06
       - Initial release
