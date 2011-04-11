@@ -6,10 +6,8 @@ use File::Copy;
 use File::Find;
 use File::Temp;
 
-use Sub::Exporter -setup => {
-    exports => ['prepare_temp_dir_for', 'update_temp_dir_for'],
-    groups  => { default => ['prepare_temp_dir_for', 'update_temp_dir_for'] },
-};
+use base 'Exporter';
+our @EXPORT = qw(prepare_temp_dir_for update_temp_dir_for);
 
 sub rcopy {
     my ($from_dir, $to_dir) = @_;
