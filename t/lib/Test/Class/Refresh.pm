@@ -37,9 +37,10 @@ sub rcopy {
 }
 
 sub prepare_temp_dir_for {
-    my ($test_id) = @_;
+    my ($test_id, $subdir) = @_;
+    $subdir ||= 'before';
 
-    my $from_dir = 't/data/' . $test_id . '/before';
+    my $from_dir = 't/data/' . $test_id . "/$subdir";
     my $to_dir = File::Temp->newdir;
 
     rcopy($from_dir, $to_dir);
@@ -48,9 +49,10 @@ sub prepare_temp_dir_for {
 }
 
 sub update_temp_dir_for {
-    my ($test_id, $to_dir) = @_;
+    my ($test_id, $to_dir, $subdir) = @_;
+    $subdir ||= 'after';
 
-    my $from_dir = 't/data/' . $test_id . '/after';
+    my $from_dir = 't/data/' . $test_id . "/$subdir";
 
     rcopy($from_dir, $to_dir);
 }
