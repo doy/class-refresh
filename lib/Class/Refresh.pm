@@ -5,6 +5,7 @@ use warnings;
 
 use Class::Unload;
 use Class::Load;
+use Try::Tiny;
 
 =head1 SYNOPSIS
 
@@ -74,6 +75,13 @@ sub modified_modules {
     my $class = shift;
 
     my @ret;
+    for my $file (keys %CACHE) {
+        # refresh files that are in our
+        # %CACHE but not in %INC
+        push @ret, $class->_file_to_mod($file)
+            if (!$INC{$file});
+    }
+
     for my $file (keys %INC) {
         if (exists $CACHE{$file}) {
             push @ret, $class->_file_to_mod($file)
@@ -140,7 +148,13 @@ sub load_module {
     my ($mod) = @_;
     $mod = $class->_file_to_mod($mod);
 
-    Class::Load::load_class($mod);
+    try {
+        Class::Load::load_class($mod);
+    }
+    catch {
+        warn $_;
+    };
+
 
     $class->_update_cache_for($mod);
 }
@@ -187,7 +201,6 @@ sub _update_cache_for {
     my $class = shift;
     my ($file) = @_;
     $file = $class->_mod_to_file($file);
-
     $CACHE{$file} = $class->_mtime($file);
 }
 
@@ -203,7 +216,7 @@ sub _mtime {
     my $class = shift;
     my ($file) = @_;
     $file = $class->_mod_to_file($file);
-
+    return 1 if !$INC{$file};
     return join ' ', (stat($INC{$file}))[1, 7, 9];
 }
 
