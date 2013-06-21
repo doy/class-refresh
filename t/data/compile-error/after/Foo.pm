@@ -3,7 +3,7 @@ use Moose;
 
 has bar => (is => 'ro');
 
-sub meth { my $error; }
+sub meth { my $error; 3 }
 
 no Moose;
 
