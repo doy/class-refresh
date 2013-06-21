@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+
+0.04  2013-06-21
       - fix refreshing a module for the first time when it was first loaded
         after the first call to refresh
 
