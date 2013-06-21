@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+
+0.03  2013-06-21
       - fix the case where reloading after a compilation error wouldn't work
         properly (Michael Reddick)
 
