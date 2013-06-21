@@ -313,21 +313,21 @@ You can also look for information at:
 
 =over 4
 
-=item * AnnoCPAN: Annotated CPAN documentation
+=item * MetaCPAN
 
-L<http://annocpan.org/dist/Class-Refresh>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Class-Refresh>
+L<https://metacpan.org/release/Class-Refresh>
 
 =item * RT: CPAN's request tracker
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Class-Refresh>
 
-=item * Search CPAN
+=item * Github
 
-L<http://search.cpan.org/dist/Class-Refresh>
+L<https://github.com/doy/class-refresh>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Class-Refresh>
 
 =back
 

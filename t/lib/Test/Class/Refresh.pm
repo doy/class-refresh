@@ -6,7 +6,7 @@ use File::Copy;
 use File::Find;
 use File::Temp;
 
-use base 'Exporter';
+use Exporter 'import';
 our @EXPORT = qw(prepare_temp_dir_for update_temp_dir_for);
 
 sub rcopy {
