@@ -152,11 +152,11 @@ sub load_module {
         Class::Load::load_class($mod);
     }
     catch {
-        warn $_;
+        die $_;
+    }
+    finally {
+        $class->_update_cache_for($mod);
     };
-
-
-    $class->_update_cache_for($mod);
 }
 
 sub _dependent_modules {
