@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+      - fix the case where reloading after a compilation error wouldn't work
+        properly (Michael Reddick)
 
 0.02  2011-04-10
       - whoops, can't use Sub::Exporter in tests
