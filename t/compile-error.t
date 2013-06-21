@@ -34,7 +34,13 @@ like(
 
 like(
     exception { $foo->meth },
-    qr/^Can't locate object method "meth" via package "Foo"/,
+    qr{^
+        # 5.18+
+        (?:Can't\ locate\ object\ method\ "meth"\ via\ package\ "Foo")
+        |
+        # 5.16 and earlier
+        (?:Undefined\ subroutine\ &Foo::meth\ called)
+    }x,
     "\$foo->meth doesn't work now"
 );
 
