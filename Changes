@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+
+0.05  2013-06-25
       - revert the previous fix, since it causes issues
       - add 'track_require' import arg, as a better fix
 
