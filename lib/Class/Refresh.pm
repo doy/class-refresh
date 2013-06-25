@@ -51,6 +51,30 @@ this will likely not work.
 
 our %CACHE;
 
+sub import {
+    my $package = shift;
+    my %opts = @_;
+
+    if ($opts{track_require}) {
+        require Devel::OverrideGlobalRequire;
+        require B;
+        Devel::OverrideGlobalRequire::override_global_require(sub {
+            my $next = shift;
+            my ($file) = @_;
+
+            my $ret = $next->();
+
+            $package->_update_cache_for($file)
+                # require v5.8.1;
+                unless ref(\$file) eq 'VSTRING'
+                # require 5.008001;
+                || !(B::svref_2object(\$file)->FLAGS & B::SVf_POK());
+
+            return $ret;
+        });
+    }
+}
+
 =method refresh
 
 The main entry point to the module. The first call to C<refresh> populates a

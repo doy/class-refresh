@@ -5,7 +5,7 @@ use Test::More;
 use lib 't/lib';
 use Test::Class::Refresh;
 
-use Class::Refresh;
+use Class::Refresh track_require => 1;
 
 my $dir = prepare_temp_dir_for('new-modules');
 push @INC, $dir->dirname;
