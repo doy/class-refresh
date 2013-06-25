@@ -29,6 +29,21 @@ application, restarting from the beginning after every code change can get
 pretty tedious. This module allows you to reload your application classes on
 the fly, so that the code/test cycle becomes a lot easier.
 
+This module takes a hash of import arguments, which can include:
+
+=over 4
+
+=item track_require
+
+  use Class::Refresh track_require => 1;
+
+If set, a C<require()> hook will be installed to track modules which are
+loaded. This will make the list of modules to reload when C<refresh> is called
+more accurate, but may cause issues with other modules which hook into
+C<require> (since the hook is global).
+
+=back
+
 This module has several limitations, due to reloading modules in this way being
 an inherently fragile operation. Therefore, this module is recommended for use
 only in development environments - it should not be used for reloading things
@@ -273,6 +288,13 @@ sub _mod_to_file {
 =head1 CAVEATS
 
 =over 4
+
+=item Refreshing modules may miss modules which have been externally loaded since the last call to refresh
+
+This is because it's not easily possible to tell if a module has been modified
+since it was loaded, if we haven't seen it so far. A workaround for this may be
+to set the C<track_require> option in the import arguments (see above),
+although this comes with its own set of caveats (since it is global behavior).
 
 =item Global variable accesses and function calls may not work as expected
 
