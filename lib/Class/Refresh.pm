@@ -74,11 +74,6 @@ Returns a list of modules which have changed since the last call to C<refresh>.
 sub modified_modules {
     my $class = shift;
 
-    if (!%CACHE) {
-        $class->_update_cache_for($_) for keys %INC;
-        return;
-    }
-
     my @ret;
     for my $file (keys %CACHE) {
         # refresh files that are in our
@@ -94,7 +89,6 @@ sub modified_modules {
         }
         else {
             $class->_update_cache_for($file);
-            push @ret, $class->_file_to_mod($file);
         }
     }
 
