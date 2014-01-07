@@ -187,11 +187,20 @@ sub load_module {
     my ($mod) = @_;
     $mod = $class->_file_to_mod($mod);
 
+    my $file = $class->_mod_to_file($mod);
+    my $last_require_failed = exists $INC{$file} && !defined $INC{$file};
+
     try {
         Class::Load::load_class($mod);
     }
     catch {
-        die $_;
+        if ($last_require_failed) {
+                # This file failed to load previously.
+                # Presumably that error has already been caught, so that's fine
+        }
+        else {
+                die $_;
+        }
     }
     finally {
         $class->_update_cache_for($mod);
