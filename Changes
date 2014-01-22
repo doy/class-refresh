@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+
+0.06  2014-01-22
       - refreshing doesn't die if a package wasn't able to be loaded in the
         past (amacleay, #2)
 
