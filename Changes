@@ -1,6 +1,7 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+      - fix for newer moose (reported by kentfredric, #3)
 
 0.06  2014-01-22
       - refreshing doesn't die if a package wasn't able to be loaded in the
