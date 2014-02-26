@@ -1,6 +1,8 @@
 Revision history for Class-Refresh
 
 {{$NEXT}}
+
+0.07  2014-02-25
       - fix for newer moose (reported by kentfredric, #3)
 
 0.06  2014-01-22
