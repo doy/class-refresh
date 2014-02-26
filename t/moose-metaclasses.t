@@ -35,7 +35,12 @@ is_deeply(\%reloaded,
 sleep 2;
 update_temp_dir_for('moose-metaclasses', $dir);
 
-Class::Refresh->refresh;
+{
+    my $warnings;
+    local $SIG{__WARN__} = sub { $warnings .= $_[0] };
+    Class::Refresh->refresh;
+    like($warnings, qr/Not reloading Moose::Meta::Class::__ANON__::SERIAL::/);
+}
 
 does_ok(Foo->meta, 'Foo::Meta::Class');
 ok(!Moose::Util::does_role(Bar->meta, 'Foo::Meta::Class'),
