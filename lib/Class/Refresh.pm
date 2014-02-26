@@ -392,9 +392,8 @@ Refreshing a class which is its own metaclass will likely break.
 
 =back
 
-Please report any bugs through RT: email
-C<bug-class-refresh at rt.cpan.org>, or browse to
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Class-Refresh>.
+Please report any bugs to GitHub Issues at
+L<https://github.com/doy/class-refresh/issues>.
 
 =head1 SEE ALSO
 
@@ -414,13 +413,13 @@ You can also look for information at:
 
 L<https://metacpan.org/release/Class-Refresh>
 
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Class-Refresh>
-
 =item * Github
 
 L<https://github.com/doy/class-refresh>
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Class-Refresh>
 
 =item * CPAN Ratings
 
